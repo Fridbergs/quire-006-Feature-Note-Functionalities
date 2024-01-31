@@ -11,7 +11,7 @@ document.getElementById("fileInput").addEventListener("change", function (e) {
     img.style.width = "100%";
     img.style.height = "auto";
     img.style.resize = "both";
-    img.style.overflow = "auto";
+    img.style.overflow = "hidden";
     img.id = "resizableImage"; // Tilldela ID
 
     document.getElementById("editableDiv").appendChild(img);
@@ -20,6 +20,7 @@ document.getElementById("fileInput").addEventListener("change", function (e) {
   reader.readAsDataURL(file);
 });
 
+//Funktion för att ändra storlek på bilden
 function addResizeListeners(img) {
   let isResizing = false;
   let startX, startY, startWidth, startHeight;
@@ -97,7 +98,7 @@ document.getElementById("getButton").addEventListener("click", function () {
     // Anta att du vill visa det senaste innehållet
     let latestContent = contentArray[contentArray.length - 1];
     // Visa innehållet i en div
-    document.getElementById("editableDiv").innerHTML = latestContent;
+    document.getElementById("contentDisplayDiv").innerHTML = latestContent;
   } else {
     console.log("Inget innehåll finns sparad i localStorage");
   }
