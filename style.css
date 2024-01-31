@@ -2,30 +2,19 @@
   width: 700px;
   height: 700px;
   border: 1px solid black;
-  padding: 10px;
-  /* position: relative; */
+  padding: 5px;
+  position: relative;
+  text-align: center;
 }
 
 #resizableImage {
-  max-width: 100%;
-  max-height: 100%;
-  height: auto;
-  display: inline-block;
-  overflow: hidden;
-  cursor: grab; /* Använd en "grab" cursor när musen är över bilden */
+  cursor: pointer;
+  max-width: 98%;
+  max-height: 98%;
+  transition: border 0.1s;
 }
 
-#resizeHandle {
-  width: 10px;
-  height: 10px;
-  background: blue;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  cursor: nwse-resize; /* Använd en "nwse-resize" cursor när musen är över nedre högra hörnet */
-}
-
-#resizableImageContainer {
-  position: relative;
-  display: inline-block;
+#resizableImage.resizable {
+  border: 2px solid green;
+  cursor: grab;
 }
