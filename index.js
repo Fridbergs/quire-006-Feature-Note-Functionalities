@@ -100,10 +100,10 @@ document.getElementById("getButton").addEventListener("click", function () {
     // Visa innehållet i en div
     document.getElementById("contentDisplayDiv").innerHTML = latestContent;
   } else {
-    console.log("Inget innehåll finns sparad i localStorage");
+    console.log("Inget innehåll finns sparat i localStorage");
   }
 });
 
 // Exempelanvändning
 saveDivContent(); // Anropa denna funktion när du vill spara innehållet
-loadDivContent(); // Anropa denna funktion när du vill läsa in sparade innehåll
+// loadDivContent(); // Anropa denna funktion när du vill läsa in sparade innehåll
