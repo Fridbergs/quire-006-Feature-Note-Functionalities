@@ -7,6 +7,15 @@
   text-align: center;
 }
 
+#contentDisplayDiv {
+  width: 700px;
+  height: 700px;
+  border: 1px solid black;
+  padding: 5px;
+  position: relative;
+  text-align: center;
+}
+
 #resizableImage {
   cursor: grab;
   max-width: 98%;
