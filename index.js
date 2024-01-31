@@ -1,17 +1,12 @@
-window.onload = function () {
-  loadDivContent();
-  // Andra åtgärder som ska utföras när sidan laddas
-};
-
 document.getElementById("fileInput").addEventListener("change", function (e) {
-  var file = e.target.files[0];
+  let file = e.target.files[0];
   if (!file.type.startsWith("image/")) {
     return;
   }
 
-  var reader = new FileReader();
+  let reader = new FileReader();
   reader.onload = function (e) {
-    var img = document.createElement("img");
+    let img = document.createElement("img");
     img.src = e.target.result;
     img.style.width = "100%";
     img.style.height = "auto";
@@ -61,11 +56,17 @@ function addResizeListeners(img) {
 // Funktion för att spara `div`-innehållet i localStorage
 function saveDivContent() {
   // Hämta innehållet från `div`
-  var divContent = document.getElementById("editableDiv").innerHTML;
+  let divContent = document.getElementById("editableDiv").innerHTML;
+
+  // Kontrollera om innehållet är tomt eller bara innehåller blanksteg
+  if (divContent.trim() === "") {
+    console.log("Inget innehåll att spara");
+    return; // Avsluta funktionen om det inte finns något innehåll att spara
+  }
 
   // Hämta den befintliga arrayen från localStorage, eller skapa en ny om den inte finns
-  var savedContent = localStorage.getItem("divContentArray");
-  var contentArray = savedContent ? JSON.parse(savedContent) : [];
+  let savedContent = localStorage.getItem("divContentArray");
+  let contentArray = savedContent ? JSON.parse(savedContent) : [];
 
   // Lägg till det nya innehållet i arrayen
   contentArray.push(divContent);
@@ -76,9 +77,9 @@ function saveDivContent() {
 
 // Funktion för att hämta och visa innehållet från localStorage
 function loadDivContent() {
-  var savedContent = localStorage.getItem("divContentArray");
+  let savedContent = localStorage.getItem("divContentArray");
   if (savedContent) {
-    var contentArray = JSON.parse(savedContent);
+    let contentArray = JSON.parse(savedContent);
     // Här kan du bearbeta och visa varje element i arrayen efter behov
     // Till exempel: visa det senaste sparade innehållet
     document.getElementById("editableDiv").innerHTML =
@@ -90,11 +91,11 @@ document.getElementById("saveButton").addEventListener("click", saveDivContent);
 
 document.getElementById("getButton").addEventListener("click", function () {
   // Hämta sparade data från localStorage
-  var savedContent = localStorage.getItem("divContentArray");
+  let savedContent = localStorage.getItem("divContentArray");
   if (savedContent) {
-    var contentArray = JSON.parse(savedContent);
+    let contentArray = JSON.parse(savedContent);
     // Anta att du vill visa det senaste innehållet
-    var latestContent = contentArray[contentArray.length - 1];
+    let latestContent = contentArray[contentArray.length - 1];
     // Visa innehållet i en div
     document.getElementById("contentDisplayDiv").innerHTML = latestContent;
   } else {
