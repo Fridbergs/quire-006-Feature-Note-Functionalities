@@ -8,23 +8,14 @@
   <body>
     <p>Chat GPT</p>
 
-    <div>
-      <button id="customButton">Anpassad Text</button>
-      <span id="fileChosen">Ingen fil vald</span>
-
-      <input type="file" id="fileInput" accept="image/*" />
-    </div>
+    <input type="file" id="fileInput" accept="image/*" style="display: none" />
+    <button id="uploadButton">Ladda upp Bild</button>
     <div
-      id="imageContainer"
+      id="editableDiv"
       contenteditable="true"
-      style="
-        width: 500px;
-        height: 500px;
-        border: 1px solid black;
-        position: relative;
-      "
+      style="width: 500px; height: 500px; border: 1px solid black"
     >
-      <!-- Den valda bilden kommer att visas här -->
+      <!-- Bilder kommer att läggas till här -->
     </div>
 
     <script src="index.js"></script>
