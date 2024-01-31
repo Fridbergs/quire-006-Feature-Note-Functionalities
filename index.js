@@ -97,7 +97,7 @@ document.getElementById("getButton").addEventListener("click", function () {
     // Anta att du vill visa det senaste innehållet
     let latestContent = contentArray[contentArray.length - 1];
     // Visa innehållet i en div
-    document.getElementById("contentDisplayDiv").innerHTML = latestContent;
+    document.getElementById("editableDiv").innerHTML = latestContent;
   } else {
     console.log("Inget innehåll finns sparad i localStorage");
   }
