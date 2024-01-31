@@ -10,28 +10,25 @@ resizableImage.addEventListener("dblclick", () => {
     resizableImage.classList.add("resizable");
     isResizing = true;
   }
-});
 
-resizableImage.addEventListener("mousedown", (e) => {
-  if (isResizing) {
-    startX = e.clientX;
-    startY = e.clientY;
-    startWidth = resizableImage.offsetWidth;
-    startHeight = resizableImage.offsetHeight;
-  }
-});
+  resizableImage.addEventListener("mouseup", (e) => {
+    if (isResizing) {
+      startX = e.clientX;
+      startY = e.clientY;
+      startWidth = resizableImage.offsetWidth;
+      startHeight = resizableImage.offsetHeight;
+    }
+  });
 
-document.addEventListener("mousemove", (e) => {
-  if (isResizing) {
-    const newWidth = startWidth + e.clientX - startX;
-    const newHeight = startHeight + e.clientY - startY;
-    resizableImage.style.width = newWidth + "px";
-    resizableImage.style.height = newHeight + "px";
-    resizableImage.style.width = newWidth + "px !important";
-    resizableImage.style.height = newHeight + "px !important";
-  }
+  document.addEventListener("mousemove", (e) => {
+    if (isResizing) {
+      let newWidth = startWidth + e.clientX - startX;
+      let newHeight = startHeight + e.clientY - startY;
+      resizableImage.style.width = newWidth + "px";
+      resizableImage.style.height = newHeight + "px";
+    }
+  });
 });
-
 document.addEventListener("mouseup", () => {
   isResizing = false;
   resizableImage.classList.remove("resizable");

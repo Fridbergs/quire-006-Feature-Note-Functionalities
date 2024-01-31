@@ -7,8 +7,11 @@
   text-align: center;
 }
 
+.resizable {
+}
+
 #resizableImage {
-  cursor: pointer;
+  cursor: grab;
   max-width: 98%;
   max-height: 98%;
   transition: border 0.1s;
@@ -16,5 +19,5 @@
 
 #resizableImage.resizable {
   border: 2px solid green;
-  cursor: grab;
+  cursor: nw-resize;
 }
