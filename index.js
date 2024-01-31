@@ -13,7 +13,8 @@ document.getElementById("fileInput").addEventListener("change", function (e) {
     let img = document.createElement("img");
     img.src = e.target.result;
 
-    img.style.maxwidth = "200px"; // Exempelstorlek, kan ändras
+    img.style.maxWidth = "100%"; // Exempelstorlek, kan ändras
+    img.style.MaxHeight = "100%";
     img.style.height = "auto";
 
     img.style.resize = "both";
