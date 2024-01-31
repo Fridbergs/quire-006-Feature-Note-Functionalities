@@ -7,9 +7,6 @@
   text-align: center;
 }
 
-.resizable {
-}
-
 #resizableImage {
   cursor: grab;
   max-width: 98%;

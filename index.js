@@ -1,22 +1,41 @@
-const resizableImage = document.getElementById("resizableImage");
-let isResizing = false;
-let startX, startY, startWidth, startHeight;
-
-resizableImage.addEventListener("dblclick", () => {
-  if (isResizing) {
-    isResizing = false;
-    resizableImage.classList.remove("resizable");
-  } else {
-    resizableImage.classList.add("resizable");
-    isResizing = true;
+document.getElementById("fileInput").addEventListener("change", function (e) {
+  var file = e.target.files[0];
+  if (!file.type.startsWith("image/")) {
+    return;
   }
 
-  resizableImage.addEventListener("mouseup", (e) => {
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    var img = document.createElement("img");
+    img.src = e.target.result;
+    img.style.width = "100%";
+    img.style.height = "auto";
+    img.style.resize = "both";
+    img.style.overflow = "auto";
+    img.id = "resizableImage"; // Tilldela ID
+
+    document.getElementById("editableDiv").appendChild(img);
+    addResizeListeners(img); // Lägg till eventlyssnare för den nya bilden
+  };
+  reader.readAsDataURL(file);
+});
+
+function addResizeListeners(img) {
+  let isResizing = false;
+  let startX, startY, startWidth, startHeight;
+
+  img.addEventListener("dblclick", () => {
+    isResizing = !isResizing;
+    img.classList.toggle("resizable");
+  });
+
+  img.addEventListener("mousedown", (e) => {
     if (isResizing) {
       startX = e.clientX;
       startY = e.clientY;
-      startWidth = resizableImage.offsetWidth;
-      startHeight = resizableImage.offsetHeight;
+      startWidth = img.offsetWidth;
+      startHeight = img.offsetHeight;
+      e.preventDefault();
     }
   });
 
@@ -24,12 +43,12 @@ resizableImage.addEventListener("dblclick", () => {
     if (isResizing) {
       let newWidth = startWidth + e.clientX - startX;
       let newHeight = startHeight + e.clientY - startY;
-      resizableImage.style.width = newWidth + "px";
-      resizableImage.style.height = newHeight + "px";
+      img.style.width = newWidth + "px";
+      img.style.height = newHeight + "px";
     }
   });
-});
-document.addEventListener("mouseup", () => {
-  isResizing = false;
-  resizableImage.classList.remove("resizable");
-});
+
+  document.addEventListener("mouseup", () => {
+    isResizing = false;
+  });
+}
